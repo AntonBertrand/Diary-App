@@ -1,0 +1,28 @@
+.navBar {
+    background: rgb(134, 157, 170);
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4rem;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+}
+
+li {
+    list-style: none;
+}
+
+.user-account span{
+    margin-right: 2rem;
+}
+
+.user-account button {
+    padding: 0.3rem 1rem;
+    border-radius: 1rem;
+    border: none;
+}

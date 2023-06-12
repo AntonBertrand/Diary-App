@@ -1,0 +1,28 @@
+.posts {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.post {
+    background: rgb(182, 182, 182);
+    display: flex;
+    border: solid black 1px;
+    justify-content: space-between;
+}
+
+.post-details {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.delete-button {
+    background: red;
+    width: 10rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
