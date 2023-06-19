@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import * as dotenv from 'dotenv';
 import postRoutes from './routes/posts.js';
+import userRoutes from './routes/users.js';
 import cors from 'cors';
 
 dotenv.config();
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(cors({origin: true, credentials: true}));
 
 app.use('/api/posts', postRoutes);
+app.use('/api/users', userRoutes);
 
 const connectDB = async () => {
     try {

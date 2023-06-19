@@ -1,0 +1,100 @@
+
+import User from '../models/User.js'
+import mongoose, {mongo} from 'mongoose';
+import bcrypt from 'bcryptjs';
+
+export const getAllUsers = async (req,res) => {
+    //Sorts by createdAt date in descending order
+    const users = await User.find({}).sort({ createdAt: -1});
+    res.status(200).json(users);
+};
+
+export const getUser = async (req,res) => {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ error: 'user does not exist'});
+    }
+    
+    try {
+        const user = await User.findById(id); 
+        if (!user) return res.status(404).json({ error: 'user does not exist'});
+        res.status(200).json(user);
+    } catch (err) {
+        res.status(400).json({ error: err.message})
+    }
+};
+
+
+export const createUser = async (req,res) => {
+
+    try {
+
+        var salt = bcrypt.genSaltSync(10);
+        var hash = bcrypt.hashSync(req.body.password, salt);
+
+        const newUser = new User({
+            username: req.body.username,
+            password: hash
+        })
+
+        await newUser.save();
+        res.status(200).json(newUser);
+
+    } catch (err) {
+        res.status(400).json({error: err.message})
+    }
+};
+
+
+export const deleteUser = async (req,res) => {
+    const {id} = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ error: 'user does not exist'});
+    }
+
+    try {
+        const user = await User.findById(id); 
+        if (!user) return res.status(404).json({ error: 'user does not exist'});
+        const deletedUser = await User.findOneAndDelete ( {_id: id} );
+        res.status(200).json(deletedUser);
+    } catch (err) {
+        res.status(400).json({ error: err.message})
+    }
+
+};
+
+
+export const updateUser = async (req,res) => {
+    const {id} = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ error: 'user does not exist'});
+    }
+
+    try {
+        const user = await User.findById(id); 
+        if (!user) return res.status(404).json({ error: 'user does not exist'});
+        const updatedUser = await User.findOneAndUpdate ( {_id: id}, {...req.body} );
+        res.status(200).json(updatedUser);
+    } catch (err) {
+        res.status(400).json({ error: err.message})
+    }
+};
+
+export const loginUser = async (req,res) => {
+
+    try {
+        const user = await User.findOne({username: req.body.username })
+        if (!user) return res.status(404).json({error: "User not found!"})
+
+        const isPasswordCorrect = await bcrypt.compare(req.body.password, user.password)
+        if (!isPasswordCorrect) return res.status(400).json({error: "Password incorrect!"})
+
+        res.status(200).json("Logged in!");
+
+    } catch (err) {
+        res.status(400).json({error: err.message})
+    }
+};
