@@ -4,12 +4,14 @@ import * as dotenv from 'dotenv';
 import postRoutes from './routes/posts.js';
 import userRoutes from './routes/users.js';
 import cors from 'cors';
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 const port = process.env.PORT;
 
 const app = express();
 
+app.use(cookieParser());
 app.use(express.json());
 
 app.use(cors({origin: true, credentials: true}));

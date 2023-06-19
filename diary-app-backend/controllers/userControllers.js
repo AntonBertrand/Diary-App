@@ -2,6 +2,7 @@
 import User from '../models/User.js'
 import mongoose, {mongo} from 'mongoose';
 import bcrypt from 'bcryptjs';
+import jwt from "jsonwebtoken";
 
 export const getAllUsers = async (req,res) => {
     //Sorts by createdAt date in descending order
@@ -92,7 +93,10 @@ export const loginUser = async (req,res) => {
         const isPasswordCorrect = await bcrypt.compare(req.body.password, user.password)
         if (!isPasswordCorrect) return res.status(400).json({error: "Password incorrect!"})
 
-        res.status(200).json("Logged in!");
+        const token = jwt.sign({id:user._id}, process.env.JWT);
+        res.cookie("acess_token", token, {
+            httpOnly: true,
+        }).status(200).json("Logged in!");
 
     } catch (err) {
         res.status(400).json({error: err.message})
