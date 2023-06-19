@@ -94,7 +94,7 @@ export const loginUser = async (req,res) => {
         if (!isPasswordCorrect) return res.status(400).json({error: "Password incorrect!"})
 
         const token = jwt.sign({id:user._id}, process.env.JWT);
-        res.cookie("acess_token", token, {
+        res.cookie("access_token", token, {
             httpOnly: true,
         }).status(200).json("Logged in!");
 
