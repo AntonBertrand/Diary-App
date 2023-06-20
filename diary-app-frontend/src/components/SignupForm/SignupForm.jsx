@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import {useNavigate, Link} from 'react-router-dom';
 import './signupForm.css'
 
 const SignupForm = () => {
 
+  const navigate = useNavigate()
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,9 +18,16 @@ const SignupForm = () => {
     };
 
     try {
-      const response = await fetch('')
-    } catch (err) {
+      const response = await fetch('http://localhost:4000/api/users/signup', {
+        method: "POST",
+        body: JSON.stringify(account),
+        headers: { 'Content-Type': 'application/json'}
+      });
 
+      alert("Account created!");
+      navigate("/")
+    } catch (err) {
+      alert(err)
     }
   }
 
@@ -32,7 +41,7 @@ const SignupForm = () => {
                 <input type="text" placeholder='Password'onChange={e => setPassword(e.target.value)}/>
                 <button>Signup</button>
                 <a href="">Forgot Password?</a>
-                <a href="">Already have an account? - Signin</a>
+                <Link to="/login"><a href="">Already have an account? - Signin</a></Link>
             </form>
         </div>
     </div>

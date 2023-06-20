@@ -22,7 +22,8 @@ const CreatePost = () => {
             body: JSON.stringify(post),
             headers: {
               'Content-Type': 'application/json'
-            }
+            },
+            withCredentials: true
           });
 
         } catch(err) {
