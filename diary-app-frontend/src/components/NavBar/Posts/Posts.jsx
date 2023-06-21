@@ -20,9 +20,9 @@ const Posts = () => {
   return (
     <div className='posts'>
 
-        { posts && posts.map((post) => {
+        { posts && posts.map((post, i) => {
 
-                   return (<div className="post">
+                   return (<div className="post" key={i}>
                     <div className="post-details">
                         <h2 className='post-title'>{post.title}</h2>
                         <span className='post-date'>{post.date}</span>
