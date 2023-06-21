@@ -33,7 +33,6 @@ const LoginForm = () => {
           console.log(data)
 
           if (data.status === "ok") {
-            localStorage.setItem("access_token", data.access_token);
             Cookies.set('access_token', data.access_token, { expires: 7 });
             alert("Logged In!");
             navigate("/")

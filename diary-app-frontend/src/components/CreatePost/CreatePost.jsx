@@ -18,6 +18,7 @@ const CreatePost = () => {
         
         try {
           const response = await fetch('http://localhost:4000/api/posts', {
+            credentials: 'include',
             method: 'POST',
             body: JSON.stringify(post),
             headers: {

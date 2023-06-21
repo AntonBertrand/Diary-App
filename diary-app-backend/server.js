@@ -11,9 +11,9 @@ const port = process.env.PORT;
 
 const app = express();
 
+//Middlewares
 app.use(cookieParser());
 app.use(express.json());
-
 app.use(cors({origin: true, credentials: true}));
 
 app.use('/api/posts', postRoutes);
