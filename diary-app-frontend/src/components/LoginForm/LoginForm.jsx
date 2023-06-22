@@ -29,8 +29,6 @@ const LoginForm = () => {
         credentials: 'include'
       }).then(response => response.json())
       .then(data => {
-        
-          console.log(data)
 
           if (data.status === "ok") {
             Cookies.set('access_token', data.access_token, { expires: 7 });
@@ -45,8 +43,6 @@ const LoginForm = () => {
       console.log(err);
       alert("Incorrect!");
     }
-
-    console.log(user);
 
   }
 
