@@ -102,3 +102,13 @@ export const loginUser = async (req,res) => {
         return res.status(400).json({error: err.message})
     }
 };
+
+export const logoutUser = async (req, res) => {
+
+    try {
+        res.status(202).clearCookie('access_token').send({message: 'cookie cleared'})
+    } catch (err) {
+        return res.status(400).json({error: err.message})
+    }
+
+}

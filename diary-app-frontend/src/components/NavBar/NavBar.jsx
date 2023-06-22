@@ -7,11 +7,23 @@ import React from 'react'
 
 const NavBar = () => {
 
-  const logout = () => {
+  const logout = async () => {
 
-    //POST FETCH TO DELETE COOKIE
+    console.log("clicked logout")
 
-    alert("You have logged out!");
+    try{
+      const response = await fetch('http://localhost:4000/api/users/logout', {
+        method: 'POST',
+        credentials: 'include',
+      });
+
+      Cookies.remove('access_token');
+      alert("Logged out!");
+
+    } catch (err){
+      console.log(err.message);
+    }
+
   }
 
   return (

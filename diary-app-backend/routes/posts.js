@@ -10,5 +10,4 @@ router.post('/', verifyToken ,createPost);
 router.delete('/:id', verifyToken, deletePost);
 router.patch('/:id', updatePost);
 
-
 export default router;
