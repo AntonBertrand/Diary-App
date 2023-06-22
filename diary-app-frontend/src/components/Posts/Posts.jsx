@@ -17,6 +17,35 @@ const Posts = () => {
         fetchPosts();
     }, []);
 
+
+    const deletePost = async (id) => {
+
+        try {
+            const response = await fetch(`http://localhost:4000/api/posts/${id}`, {
+                credentials: 'include',
+                method: 'DELETE',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                withCredentials: true
+              });
+
+              if(!response.ok){
+                throw Error(response.statusText)
+              }
+
+              alert("Entry Deleted!")
+              window.location.reload();
+
+        } catch (err) {
+            console.log(err);
+            alert("Entry could not be deleted!")
+        }
+       
+
+    }
+
+
   return (
     <div className='posts'>
 
@@ -28,7 +57,7 @@ const Posts = () => {
                         <span className='post-date'>{post.date}</span>
                         <span className='post-content'>{post.content}</span>
                     </div>
-                    <div className="delete-button">
+                    <div className="delete-button" onClick={() => {deletePost(post._id)}}>
                         <p>Delete Entry</p>
                     </div>
                 </div>)

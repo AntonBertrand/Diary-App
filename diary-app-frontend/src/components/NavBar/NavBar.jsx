@@ -1,13 +1,17 @@
 import {Link} from 'react-router-dom';
 import './navbar.css';
+import Cookies from 'js-cookie';
+
 
 import React from 'react'
 
 const NavBar = () => {
 
   const logout = () => {
-    document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
-    alert("Cookies Cleared!");
+
+    //POST FETCH TO DELETE COOKIE
+
+    alert("You have logged out!");
   }
 
   return (

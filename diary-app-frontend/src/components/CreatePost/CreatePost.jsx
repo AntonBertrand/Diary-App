@@ -8,28 +8,39 @@ const CreatePost = () => {
     const [date, setDate] = useState('');
     const [content, setContent] = useState('');
 
-    const postForm = async () => {
+    const postForm = async (e) => {
+
+      e.preventDefault();
 
       const post = {
         "date": date,
         "title": title,
         "content": content
       };
-        
-        try {
-          const response = await fetch('http://localhost:4000/api/posts', {
-            credentials: 'include',
-            method: 'POST',
-            body: JSON.stringify(post),
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            withCredentials: true
-          });
+    
+      try{
 
-        } catch(err) {
-          console.log(err);
+        const response = await fetch('http://localhost:4000/api/posts', {
+          credentials: 'include',
+          method: 'POST',
+          body: JSON.stringify(post),
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          withCredentials: true
+        });
+
+        if(!response.ok){
+          throw Error(response.statusText)
         }
+
+        window.location.reload();
+
+      } catch(err) {
+        console.log(err)
+        alert("You must be logged in!");
+      }
+
 
 
     }
