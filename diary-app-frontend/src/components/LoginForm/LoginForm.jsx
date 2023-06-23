@@ -3,7 +3,6 @@ import { useNavigate, Link } from "react-router-dom";
 import './loginForm.css'
 import Cookies from 'js-cookie';
 
-
 const LoginForm = () => {
 
   const navigate = useNavigate()
@@ -15,7 +14,7 @@ const LoginForm = () => {
     
     e.preventDefault()
 
-    const user = {
+    const userAcc = {
       "username": username,
       "password": password
     }
@@ -24,7 +23,7 @@ const LoginForm = () => {
 
       const response = await fetch("http://localhost:4000/api/users/login", {
         method: "POST",
-        body: JSON.stringify(user),
+        body: JSON.stringify(userAcc),
         headers: { 'Content-Type': 'application/json'},
         credentials: 'include'
       }).then(response => response.json())
@@ -32,6 +31,8 @@ const LoginForm = () => {
 
           if (data.status === "ok") {
             Cookies.set('access_token', data.access_token, { expires: 7 });
+            Cookies.set('user_id', data.user_id, { expires: 7 });
+            Cookies.set('user_name', data.user_name, { expires: 7 });
             alert("Logged In!");
             navigate("/")
           } else {
@@ -55,7 +56,7 @@ const LoginForm = () => {
                 <input type="text" placeholder='Password'onChange={ (e) => {setPassword(e.target.value)}}/>
                 <button>Login</button>
                 <a href="">Forgot Password?</a>
-                <Link to="/signup"><a href="">Not a member? - Signup</a></Link>
+                <Link to="/signup">Not a member? - Signup</Link>
             </form>
         </div>
     </div>

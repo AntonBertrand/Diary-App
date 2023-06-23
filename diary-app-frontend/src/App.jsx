@@ -1,8 +1,9 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home.jsx'
 import LoginForm from './components/LoginForm/LoginForm.jsx'
 import SignupForm from './components/SignupForm/SignupForm.jsx';
+import React from 'react';
 
 
 function App() {

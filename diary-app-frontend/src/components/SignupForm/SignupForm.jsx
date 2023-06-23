@@ -41,7 +41,7 @@ const SignupForm = () => {
                 <input type="text" placeholder='Password'onChange={e => setPassword(e.target.value)}/>
                 <button>Signup</button>
                 <a href="">Forgot Password?</a>
-                <Link to="/login"><a href="">Already have an account? - Signin</a></Link>
+                <Link to="/login">Already have an account? - Signin</Link>
             </form>
         </div>
     </div>
