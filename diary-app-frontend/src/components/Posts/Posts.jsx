@@ -1,20 +1,29 @@
 import React from 'react'
 import './posts.css';
 import { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
 
 const Posts = () => {
     const [posts, setPosts] = useState(null);
 
     useEffect(() => {
-        const fetchPosts = async () => {
-            const response = await fetch('http://localhost:4000/api/posts');
-            
-            const json = await response.json();
 
-            if (response.ok) setPosts(json);
-        }
+      const fetchPosts = async () => {
+        const response = await fetch(`http://localhost:4000/api/posts/user/${id}`);
+        
+        const json = await response.json();
 
+        if (response.ok) setPosts(json);
+    }
+
+      const id = Cookies.get('user_id');
+
+      if (!id) {
+        console.log("User not logged in!")
+      } else {
         fetchPosts();
+      }
+
     }, []);
 
 

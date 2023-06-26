@@ -1,6 +1,7 @@
 import React from 'react'
 import './createPost.css'
 import { useState } from 'react';
+import Cookies from 'js-cookie';
 
 const CreatePost = () => {
 
@@ -13,6 +14,7 @@ const CreatePost = () => {
       e.preventDefault();
 
       const post = {
+        "createdBy": Cookies.get('user_id'),
         "date": date,
         "title": title,
         "content": content

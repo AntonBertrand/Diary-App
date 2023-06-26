@@ -8,6 +8,12 @@ export const getAllPosts = async (req,res) => {
     res.status(200).json(posts);
 };
 
+export const getUsersPosts = async (req,res) => {
+    const posts = await Post.find({createdBy: req.params.id});
+    res.status(200).json(posts);
+};
+
+
 export const getPost = async (req,res) => {
     const { id } = req.params;
 
@@ -26,10 +32,10 @@ export const getPost = async (req,res) => {
 
 
 export const createPost = async (req,res) => {
-    const {date, title, content} = req.body;
+    const {createdBy, date, title, content} = req.body;
 
     try {
-        const post = await Post.create({date, title, content});
+        const post = await Post.create({createdBy, date, title, content});
         res.status(200).json(post);
     } catch (err) {
         res.status(400).json({error: err.message})
