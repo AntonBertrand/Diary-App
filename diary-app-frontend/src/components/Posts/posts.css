@@ -39,3 +39,26 @@
 .delete-button:hover {
     background: red;
 }
+
+@media screen and (max-width: 650px){
+    .delete-button {
+        width: 8rem;
+        font-size: 14px;
+    }
+
+    .posts {
+        width: 100%;
+    }
+
+    .post-title{
+        font-size: 18px;
+    }
+
+    .post-date {
+        font-size: 12px;
+    }
+
+    .post-details {
+        font-size: 14px;
+    }
+}

@@ -44,3 +44,9 @@
 .login-form a {
     margin: 0.5rem 0;
 }
+
+@media screen and (max-width: 800px){
+    .login-form {
+        width: 80%;
+    }
+}

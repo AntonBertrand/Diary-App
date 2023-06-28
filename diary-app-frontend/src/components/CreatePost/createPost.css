@@ -28,3 +28,17 @@
     height: 3rem;
     color: white;
 }
+
+@media screen and (max-width: 650px){
+    .createPost form input {
+        font-size: 13px;
+    }
+
+    .createPost form textarea {
+        font-size: 12px;
+    }
+
+    .createPost { 
+        width: 100%;
+    }
+}
