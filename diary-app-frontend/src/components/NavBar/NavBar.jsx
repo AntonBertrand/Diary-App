@@ -1,10 +1,15 @@
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import './navbar.css';
 import Cookies from 'js-cookie';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faBook } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 import React from 'react'
 
 const NavBar = () => {
+
+  const navigate = useNavigate()
 
   const logout = async () => {
 
@@ -17,8 +22,8 @@ const NavBar = () => {
       Cookies.remove('access_token');
       Cookies.remove('user_id');
       Cookies.remove('user_name');
-      window.location.reload();
-      alert("Logged out!");
+      navigate("/")
+      
 
     } catch (err){
       console.log(err.message);
@@ -28,9 +33,12 @@ const NavBar = () => {
 
   return (
         <nav className='navBar'>
+        <div className="logo">
         <span>The Diary App</span>
+        <FontAwesomeIcon icon={faBook} />
+        </div>
 
-            <ul>
+            <ul className='home-button'>
                 <li>
                     <Link className='link' to="/">Home</Link>
                 </li>
@@ -40,6 +48,10 @@ const NavBar = () => {
               <span>{Cookies.get('user_name')}</span>
               <Link to="/login"> <button>Login</button> </Link>
               <button onClick={logout}>Logout</button>
+            </div>
+
+            <div className="mobile-nav">
+            <FontAwesomeIcon icon={faBars}/>
             </div>
         </nav>
   )

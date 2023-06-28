@@ -1,11 +1,21 @@
 .navBar {
-    background: rgb(134, 157, 170);
+    background: #1B1B1B;
     width: 100%;
     height: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 4rem;
+    padding: 2rem 4rem;
+}
+
+.logo {
+    color: white;
+}
+
+.logo span{
+    margin-right: 0.3rem;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .link {
@@ -19,10 +29,35 @@ li {
 
 .user-account span{
     margin-right: 2rem;
+    color: white;
 }
 
 .user-account button {
     padding: 0.3rem 1rem;
-    border-radius: 1rem;
-    border: none;
+    border: 1px solid white;
+    background: none;
+    color: white;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.mobile-nav {
+    display: none;
+}
+
+@media screen and (max-width: 650px){
+    .mobile-nav {
+        display: block;
+        color: white;
+        cursor: pointer;
+        font-size: 26px;
+    }
+
+    .home-button {
+        display: none;
+    }
+
+    .user-account {
+        display: none;
+    }
 }

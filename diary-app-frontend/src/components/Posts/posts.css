@@ -7,10 +7,17 @@
 }
 
 .post {
-    background: rgb(182, 182, 182);
+    background: #1B1B1B;
+    color: white;
     display: flex;
     border: solid black 1px;
     justify-content: space-between;
+    cursor: pointer;
+    transition: ease-in 0.3s;
+}
+
+.post:hover {
+    background: #3a3a3a;
 }
 
 .post-details {
@@ -20,10 +27,15 @@
 }
 
 .delete-button {
-    background: red;
+    background: #65D1FF;
     width: 10rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: ease-in 0.3s;
+}
+
+.delete-button:hover {
+    background: red;
 }

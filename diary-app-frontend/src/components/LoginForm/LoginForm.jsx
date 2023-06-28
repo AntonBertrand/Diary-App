@@ -34,7 +34,7 @@ const LoginForm = () => {
             Cookies.set('user_id', data.user_id, { expires: 7 });
             Cookies.set('user_name', data.user_name, { expires: 7 });
             alert("Logged In!");
-            navigate("/")
+            navigate("/home")
           } else {
             alert("Invalid Username/Password combination!");
           }

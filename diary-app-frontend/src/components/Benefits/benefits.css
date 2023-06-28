@@ -1,0 +1,52 @@
+.benefits {
+    width: 100%;
+    background: #1B1B1B;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+
+}
+
+.benefits h1 {
+    text-align: center;
+    font-size: 38px;
+}
+
+.divider {
+    width: 40%;
+    height: 2px;
+    background: white;
+    align-self: center;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 2rem 0;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.card p {
+    font-size: 18px;
+}
+
+.icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 900px) {
+    .cards {
+        grid-template-columns: 2fr 2fr;
+        gap: 2rem;
+    }
+
+}

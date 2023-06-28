@@ -1,0 +1,107 @@
+.landing {
+    width: 100%;
+}
+
+.hero {
+    display: flex;
+    padding: 5rem 0;
+    width: 50%;
+    margin: auto;
+}
+
+.hero-left {
+    width: 100%;
+}
+
+.hero-left h1 {
+    font-size: 76px;
+}
+
+.hero-left h2 {
+    font-size: 42px;
+    font-weight: 400;
+}
+
+.hero-left p {
+    font-size: 22px;
+    font-weight: 100;
+}
+
+.divider {
+    width: 40%;
+    height: 3px;
+    background: black;
+    margin: 1rem 0;
+}
+
+.hero-cta {
+    font-size: 18px;
+    background: #65D1FF;
+    color: white;
+    border: none;
+    height: 3rem;
+    font-weight: bold;
+    padding: 0.8rem;
+    margin: 1rem 0;
+    cursor: pointer;
+    transition: ease-in 0.4s;
+}
+
+.hero-cta:hover{
+    background: #1B1B1B;
+}
+
+.hero-right {
+    position: relative;
+    width: 100%;
+}
+
+.hero-img {
+    position: absolute;
+    width: 300px;
+}
+
+.bgSquare {
+    position: absolute;
+    left: 5rem;
+    width: 14rem;
+    height: 25rem;
+    background: #65D1FF;
+    z-index: -10;
+}
+
+@media screen and (max-width: 900px) {
+    .hero-img {
+        width: 200px;
+    }
+    
+    .bgSquare {
+        width: 10rem;
+        height: 18rem;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+    .hero-right {
+        display: none;
+    }
+
+    .hero-left h1 {
+        font-size: 56px;
+    }
+
+    .hero-left h2 {
+        font-size: 28px;
+    }
+
+    .hero-left p {
+        font-size: 16px;
+    }
+
+    .hero-cta {
+        font-size: 16px;
+        height: 3rem;
+    }
+
+}
