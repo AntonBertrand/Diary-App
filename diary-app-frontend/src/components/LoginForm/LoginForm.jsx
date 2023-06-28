@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from "react-router-dom";
 import './loginForm.css'
 import Cookies from 'js-cookie';
@@ -9,6 +9,17 @@ const LoginForm = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+
+    if (!Cookies.get('user_name')) {
+      return;
+    } else {
+      navigate('/home')
+    }
+
+  }, [])
+  
 
   const handleSubmit = async (e) => {
     

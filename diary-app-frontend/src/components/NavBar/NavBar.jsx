@@ -5,11 +5,17 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const NavBar = () => {
 
   const navigate = useNavigate()
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    loginStatus();
+  }, [])
+  
 
   const logout = async () => {
 
@@ -23,10 +29,20 @@ const NavBar = () => {
       Cookies.remove('user_id');
       Cookies.remove('user_name');
       navigate("/")
-      
+      setLoggedIn(false);
 
     } catch (err){
       console.log(err.message);
+    }
+
+  }
+
+  const loginStatus = () => {
+
+    if (!Cookies.get('user_name')) {
+      setLoggedIn(false);
+    } else {
+      setLoggedIn(true);
     }
 
   }
@@ -46,7 +62,7 @@ const NavBar = () => {
 
             <div className="user-account">
               <span>{Cookies.get('user_name')}</span>
-              <Link to="/login"> <button>Login</button> </Link>
+              <Link to="/login"> <button>{loggedIn ? "Dashboard" : "Login"}</button> </Link>
               <button onClick={logout}>Logout</button>
             </div>
 
