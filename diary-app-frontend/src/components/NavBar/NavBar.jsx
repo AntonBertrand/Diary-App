@@ -63,7 +63,7 @@ const NavBar = () => {
             <div className="user-account">
               <span>{Cookies.get('user_name')}</span>
               <Link to="/login"> <button>{loggedIn ? "Dashboard" : "Login"}</button> </Link>
-              <button onClick={logout}>Logout</button>
+              { loggedIn && <button onClick={logout}>Logout</button>}
             </div>
 
             <div className="mobile-nav">
