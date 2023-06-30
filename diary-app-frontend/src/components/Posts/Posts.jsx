@@ -2,9 +2,13 @@ import React from 'react'
 import './posts.css';
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
+import { Pagination } from '../Pagination/Pagination';
 
 const Posts = () => {
-    const [posts, setPosts] = useState(null);
+    const [posts, setPosts] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage, setPostsPerPage] = useState(4);
+
 
     useEffect(() => {
 
@@ -55,10 +59,14 @@ const Posts = () => {
     }
 
 
+    const lastPostIndex = currentPage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+    const currentPosts = posts.slice(firstPostIndex ,lastPostIndex);
+
   return (
     <div className='posts'>
 
-        { posts && posts.map((post, i) => {
+        { currentPosts && currentPosts.map((post, i) => {
 
                    return (<div className="post" key={i}>
                     <div className="post-details">
@@ -71,6 +79,8 @@ const Posts = () => {
                     </div>
                 </div>)
         })}
+
+        <Pagination totalPosts = {posts.length} postsPerPage = {postsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
 
     </div>
   )
