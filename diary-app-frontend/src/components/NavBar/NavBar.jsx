@@ -11,6 +11,7 @@ const NavBar = () => {
 
   const navigate = useNavigate()
   const [loggedIn, setLoggedIn] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   useEffect(() => {
     loginStatus();
@@ -47,6 +48,14 @@ const NavBar = () => {
 
   }
 
+  const mobileNavStatus = () => {
+    if(mobileNavOpen) {
+      setMobileNavOpen(false);
+    } else {
+      setMobileNavOpen(true);
+    }
+  }
+
   return (
         <nav className='navBar'>
         <div className="logo">
@@ -63,11 +72,18 @@ const NavBar = () => {
             <div className="user-account">
               <span>{Cookies.get('user_name')}</span>
               <Link to="/login"> <button>{loggedIn ? "Dashboard" : "Login"}</button> </Link>
-              { loggedIn && <button onClick={logout}>Logout</button>}
+              { loggedIn ? <button onClick={logout}>Logout</button> : <Link to="/signup"><button>Create an Account</button></Link>}
             </div>
 
-            <div className="mobile-nav">
+            <div className="mobile-nav" onClick={mobileNavStatus}>
             <FontAwesomeIcon icon={faBars}/>
+            { mobileNavOpen && 
+                <ul className="mobile-nav-menu">
+                  <li><Link className='link' to="/">Home</Link></li>
+                  <Link to="/login"> <li>{loggedIn ? "Dashboard" : "Login"}</li> </Link>
+                  { loggedIn ? <li onClick={logout}>Logout</li> : <Link to="/signup"><li>Create an Account</li></Link>}
+                </ul>
+              }
             </div>
         </nav>
   )
