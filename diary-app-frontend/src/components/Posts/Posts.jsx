@@ -71,11 +71,11 @@ const Posts = () => {
                    return (<div className="post" key={i}>
                     <div className="post-details">
                         <h2 className='post-title'>{post.title}</h2>
-                        <span className='post-date'>{post.date}</span>
-                        <span className='post-content'>{post.content}</span>
+                        <span className='post-date'>{post.date.substring(0,10)}</span>
+                        <span className='post-content'>{post.content.substring(0,150) + '...'}</span>
                     </div>
                     <div className="delete-button" onClick={() => {deletePost(post._id)}}>
-                        <p>Delete Entry</p>
+                        <p>X</p>
                     </div>
                 </div>)
         })}
