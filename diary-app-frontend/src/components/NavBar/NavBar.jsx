@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import configData from "../../config.json";
 
 import React, { useEffect, useState } from 'react'
 
@@ -21,7 +22,7 @@ const NavBar = () => {
   const logout = async () => {
 
     try{
-      const response = await fetch('http://localhost:4000/api/users/logout', {
+      const response = await fetch(`${configData.SERVER_URL}/api/users/logout`, {
         method: 'POST',
         credentials: 'include',
       });

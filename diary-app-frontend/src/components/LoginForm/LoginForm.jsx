@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from "react-router-dom";
 import './loginForm.css'
 import Cookies from 'js-cookie';
+import configData from "../../config.json";
+
 
 const LoginForm = () => {
 
@@ -32,7 +34,7 @@ const LoginForm = () => {
 
     try {
 
-      const response = await fetch("http://localhost:4000/api/users/login", {
+      const response = await fetch(`${configData.SERVER_URL}/api/users/login`, {
         method: "POST",
         body: JSON.stringify(userAcc),
         headers: { 'Content-Type': 'application/json'},

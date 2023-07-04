@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {useNavigate, Link} from 'react-router-dom';
 import './signupForm.css'
+import configData from "../../config.json";
 
 const SignupForm = () => {
 
@@ -18,7 +19,7 @@ const SignupForm = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:4000/api/users/signup', {
+      const response = await fetch(`${configData.SERVER_URL}/api/users/signup`, {
         method: "POST",
         body: JSON.stringify(account),
         headers: { 'Content-Type': 'application/json'}

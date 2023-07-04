@@ -2,6 +2,7 @@ import React from 'react'
 import './createPost.css'
 import { useState } from 'react';
 import Cookies from 'js-cookie';
+import configData from "../../config.json";
 
 const CreatePost = () => {
 
@@ -22,7 +23,7 @@ const CreatePost = () => {
     
       try{
 
-        const response = await fetch('http://localhost:4000/api/posts', {
+        const response = await fetch(`${configData.SERVER_URL}/api/posts`, {
           credentials: 'include',
           method: 'POST',
           body: JSON.stringify(post),

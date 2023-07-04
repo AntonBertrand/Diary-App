@@ -3,6 +3,7 @@ import './posts.css';
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { Pagination } from '../Pagination/Pagination';
+import configData from "../../config.json";
 
 const Posts = () => {
     const [posts, setPosts] = useState([]);
@@ -13,7 +14,7 @@ const Posts = () => {
     useEffect(() => {
 
       const fetchPosts = async () => {
-        const response = await fetch(`http://localhost:4000/api/posts/user/${id}`);
+        const response = await fetch(`${configData.SERVER_URL}/api/posts/user/${id}`);
         
         const json = await response.json();
 
@@ -34,7 +35,7 @@ const Posts = () => {
     const deletePost = async (id) => {
 
         try {
-            const response = await fetch(`http://localhost:4000/api/posts/${id}`, {
+            const response = await fetch(`${configData.SERVER_URL}/api/posts/${id}`, {
                 credentials: 'include',
                 method: 'DELETE',
                 headers: {
