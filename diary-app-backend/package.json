@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no tests specified\" && exit 1",
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "build": "npm i"
   },
   "author": "Anton Bertrand",
   "license": "ISC",
