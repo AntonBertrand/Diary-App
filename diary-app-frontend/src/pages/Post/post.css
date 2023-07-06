@@ -1,0 +1,36 @@
+.post-page{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+
+.post-page .post-container {
+    width: 75%;
+    align-self: center;
+    padding: 2rem 0;
+}
+
+.post-page .post-date {
+    font-size: 22px;
+    color: rgb(53, 53, 53);
+}
+
+.post-page .post-content {
+    padding-top: 1rem;
+}
+
+.post-page .home-btn {
+    margin-top: 2rem;
+    background: #65D1FF;
+    color: white;
+    border: none;
+    font-size: 18px;
+    padding: 1rem;
+    transition: ease-in 0.2s;
+    cursor: pointer;
+}
+
+.post-page .home-btn:hover {
+    background: #65d1ffc5;
+}

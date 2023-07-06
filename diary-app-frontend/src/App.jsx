@@ -5,6 +5,7 @@ import Landing from './pages/landing/Landing.jsx'
 import LoginForm from './components/LoginForm/LoginForm.jsx'
 import SignupForm from './components/SignupForm/SignupForm.jsx';
 import React from 'react';
+import Post from './pages/Post/Post';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/login" element = {<LoginForm/>} />
         <Route path="/signup" element={<SignupForm/>} />
+        <Route path="/Post/:id" element={<Post/>} />
       </Routes>
   );
 }

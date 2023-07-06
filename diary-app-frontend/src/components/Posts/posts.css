@@ -6,7 +6,7 @@
     width: 50%;
 }
 
-.post {
+.posts .post {
     background: #1B1B1B;
     color: white;
     display: flex;
@@ -16,17 +16,17 @@
     transition: ease-in 0.3s;
 }
 
-.post:hover {
+.posts .post:hover {
     background: #3a3a3a;
 }
 
-.post-details {
+.posts .post-details {
     display: flex;
     flex-direction: column;
     padding: 1rem;
 }
 
-.delete-button {
+.posts .delete-button {
     background: #65D1FF;
     width: 10rem;
     cursor: pointer;
@@ -36,12 +36,12 @@
     transition: ease-in 0.3s;
 }
 
-.delete-button:hover {
+.posts .delete-button:hover {
     background: red;
 }
 
 @media screen and (max-width: 650px){
-    .delete-button {
+    .posts .delete-button {
         width: 8rem;
         font-size: 14px;
     }
@@ -50,15 +50,15 @@
         width: 100%;
     }
 
-    .post-title{
+    .posts .post-title{
         font-size: 18px;
     }
 
-    .post-date {
+    .posts .post-date {
         font-size: 12px;
     }
 
-    .post-details {
+    .posts .post-details {
         font-size: 14px;
     }
 }

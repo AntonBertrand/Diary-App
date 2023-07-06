@@ -17,6 +17,7 @@
     height: 3rem;
     background: rgb(255, 255, 255);
     font-size: 18px;
+    cursor: pointer;
 }
 
 .createPost form textarea {
@@ -27,6 +28,12 @@
     background: #65D1FF;
     height: 3rem;
     color: white;
+    cursor: pointer;
+    transition: ease-in 0.2s;
+}
+
+.createPost form button:hover {
+    background: #65d1ffb2;
 }
 
 @media screen and (max-width: 650px){

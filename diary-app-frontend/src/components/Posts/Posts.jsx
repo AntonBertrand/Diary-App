@@ -4,11 +4,13 @@ import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { Pagination } from '../Pagination/Pagination';
 import configData from "../../config.json";
+import { useNavigate } from 'react-router-dom';
 
 const Posts = () => {
     const [posts, setPosts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(4);
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -30,6 +32,11 @@ const Posts = () => {
       }
 
     }, []);
+
+
+    const loadPost =  (id) => {
+      navigate(`/post/${id}`);
+    }
 
 
     const deletePost = async (id) => {
@@ -70,7 +77,7 @@ const Posts = () => {
         { currentPosts && currentPosts.map((post, i) => {
 
                    return (<div className="post" key={i}>
-                    <div className="post-details">
+                    <div className="post-details" onClick={() => {loadPost(post._id)}}>
                         <h2 className='post-title'>{post.title}</h2>
                         <span className='post-date'>{post.date.substring(0,10)}</span>
                         <span className='post-content'>{post.content.substring(0,150) + '...'}</span>
