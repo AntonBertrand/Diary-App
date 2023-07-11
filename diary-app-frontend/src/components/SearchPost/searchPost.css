@@ -1,0 +1,38 @@
+.searchPost {
+    width: 100%;
+    height: 3rem;
+    background: #65D1FF;
+    display: flex;
+    padding: 0 2rem;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchPost input{
+    width: 50%;
+    height: 75%;
+    padding: 0 1rem;
+    border: none;
+    background: none;
+    color: white;
+}
+
+.searchPost input::placeholder{
+    color: white;
+}
+
+.searchPost input:focus{
+    outline-width: 0;
+}
+
+.searchBtn {
+    color: white;
+    height: 50%;
+    transition: ease-in 0.3s;
+    cursor: pointer;
+}
+
+.searchBtn:hover {
+    height: 75%;
+}

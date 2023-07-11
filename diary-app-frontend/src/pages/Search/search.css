@@ -1,0 +1,13 @@
+.home-btn {
+    background: #65D1FF;
+    color: white;
+    border: none;
+    font-size: 18px;
+    padding: 1rem;
+    transition: ease-in 0.2s;
+    cursor: pointer;
+}
+
+.home-btn:hover {
+    background: #65d1ffc5;
+}

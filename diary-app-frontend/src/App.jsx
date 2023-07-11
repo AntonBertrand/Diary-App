@@ -6,6 +6,7 @@ import LoginForm from './components/LoginForm/LoginForm.jsx'
 import SignupForm from './components/SignupForm/SignupForm.jsx';
 import React from 'react';
 import Post from './pages/Post/Post';
+import Search from './pages/Search/Search';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element = {<LoginForm/>} />
         <Route path="/signup" element={<SignupForm/>} />
         <Route path="/Post/:id" element={<Post/>} />
+        <Route path='/search/:id' element={<Search/>} />
       </Routes>
   );
 }
