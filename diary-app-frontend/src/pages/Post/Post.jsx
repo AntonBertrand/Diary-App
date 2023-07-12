@@ -4,6 +4,7 @@ import './post.css'
 import NavBar from '../../components/NavBar/NavBar';
 import Footer from '../../components/Footer/Footer';
 import { useNavigate } from 'react-router-dom';
+import configData from "../../config.json";
 
 const Post = () => {
 
@@ -18,7 +19,7 @@ const Post = () => {
     
     const fetchPost = async () => {
 
-      const response = await fetch(`http://localhost:4000/api/posts/${id}`);
+      const response = await fetch(`${configData.SERVER_URL}/api/posts/${id}`);
 
       const json = await response.json();
 
