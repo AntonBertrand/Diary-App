@@ -43,8 +43,8 @@ const LoginForm = () => {
       .then(data => {
 
           if (data.status === "ok") {
-            Cookies.set('user_id', data.user_id, { expires: 7 });
-            Cookies.set('user_name', data.user_name, { expires: 7 });
+            Cookies.set('user_id', data.user_id);
+            Cookies.set('user_name', data.user_name);
             alert("Logged In!");
             navigate("/home")
           } else {
