@@ -43,12 +43,9 @@ const Posts = () => {
 
         try {
             const response = await fetch(`${configData.SERVER_URL}/api/posts/${id}`, {
-                credentials: 'include',
                 method: 'DELETE',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                withCredentials: true
+                headers: {'Content-Type': 'application/json'},
+                credentials: 'include',
               });
 
               if(!response.ok){

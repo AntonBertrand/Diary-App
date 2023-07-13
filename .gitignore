@@ -2,3 +2,5 @@
 diary-app-backend/.env
 node_modules
 .env
+diary-app-frontend/src/config.json
+diary-app-frontend/src/config.json

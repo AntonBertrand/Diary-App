@@ -28,9 +28,9 @@ const CreatePost = () => {
           method: 'POST',
           body: JSON.stringify(post),
           headers: {
-            'Content-Type': 'application/json'
-          },
-          withCredentials: true
+            'Content-Type': 'application/json',
+            'Cookie': [Cookies.get('access_token')]
+          }
         });
 
         if(!response.ok){
