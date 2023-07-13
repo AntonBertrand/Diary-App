@@ -3,12 +3,16 @@ import './createPost.css'
 import { useState } from 'react';
 import Cookies from 'js-cookie';
 import configData from "../../config.json";
+import { useNavigate } from 'react-router';
 
 const CreatePost = () => {
 
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
     const [content, setContent] = useState('');
+
+    const navigate = useNavigate()
+
 
     const postForm = async (e) => {
 
@@ -36,7 +40,7 @@ const CreatePost = () => {
           throw Error(response.statusText)
         }
 
-        window.location.reload();
+        navigate(0)
 
       } catch(err) {
         console.log(err)

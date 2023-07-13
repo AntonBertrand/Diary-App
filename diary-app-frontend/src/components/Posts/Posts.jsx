@@ -53,7 +53,7 @@ const Posts = () => {
               }
 
               alert("Entry Deleted!")
-              window.location.reload();
+              navigate(0);
 
         } catch (err) {
             console.log(err);
