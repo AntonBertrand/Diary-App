@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import './loginForm.css'
 import Cookies from 'js-cookie';
 import configData from "../../config.json";
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 
 const LoginForm = () => {
@@ -11,6 +12,7 @@ const LoginForm = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
 
@@ -26,6 +28,8 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     
     e.preventDefault()
+
+    setLoading(true);
 
     const userAcc = {
       "username": username,
@@ -45,9 +49,11 @@ const LoginForm = () => {
           if (data.status === "ok") {
             Cookies.set('user_id', data.user_id);
             Cookies.set('user_name', data.user_name);
+            setLoading(false);
             alert("Logged In!");
             navigate("/home")
           } else {
+            setLoading(false);
             alert("Invalid Username/Password combination!");
           }
       })
@@ -61,6 +67,7 @@ const LoginForm = () => {
 
   return (
     <div className='login'>
+        {loading ? <LoadingSpinner /> : null}
         <div className="login-form">
             <h1>Login</h1>
             <form action="" onSubmit={handleSubmit}>

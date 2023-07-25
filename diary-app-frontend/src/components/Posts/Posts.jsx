@@ -5,22 +5,28 @@ import Cookies from 'js-cookie';
 import { Pagination } from '../Pagination/Pagination';
 import configData from "../../config.json";
 import { useNavigate } from 'react-router-dom';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 const Posts = () => {
     const [posts, setPosts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(4);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
 
     useEffect(() => {
 
       const fetchPosts = async () => {
+        setLoading(true);
         const response = await fetch(`${configData.SERVER_URL}/api/posts/user/${id}`);
         
         const json = await response.json();
 
-        if (response.ok) setPosts(json);
+        if (response.ok) {
+          setLoading(false);
+          setPosts(json);
+        } 
     }
 
       const id = Cookies.get('user_id');
@@ -40,6 +46,8 @@ const Posts = () => {
 
 
     const deletePost = async (id) => {
+      setLoading(true);
+
 
         try {
             const response = await fetch(`${configData.SERVER_URL}/api/posts/${id}`, {
@@ -49,13 +57,16 @@ const Posts = () => {
               });
 
               if(!response.ok){
+                setLoading(false);
                 throw Error(response.statusText)
               }
 
+              setLoading(false);
               alert("Entry Deleted!")
               navigate(0);
 
         } catch (err) {
+          setLoading(false);
             console.log(err);
             alert("Entry could not be deleted!")
         }
@@ -70,6 +81,8 @@ const Posts = () => {
 
   return (
     <div className='posts'>
+
+        {loading ? <LoadingSpinner /> : null}
 
         { currentPosts && currentPosts.map((post, i) => {
 

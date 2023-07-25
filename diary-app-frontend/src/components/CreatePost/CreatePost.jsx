@@ -4,12 +4,14 @@ import { useState } from 'react';
 import Cookies from 'js-cookie';
 import configData from "../../config.json";
 import { useNavigate } from 'react-router';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 const CreatePost = () => {
 
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
     const [content, setContent] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate()
 
@@ -17,6 +19,8 @@ const CreatePost = () => {
     const postForm = async (e) => {
 
       e.preventDefault();
+
+      setLoading(true);
 
       const post = {
         "createdBy": Cookies.get('user_id'),
@@ -37,12 +41,15 @@ const CreatePost = () => {
         });
 
         if(!response.ok){
+          setLoading(false);
           throw Error(response.statusText)
         }
 
+        setLoading(false);
         navigate(0)
 
       } catch(err) {
+        setLoading(false);
         console.log(err)
         alert("You must be logged in!");
       }
@@ -54,6 +61,7 @@ const CreatePost = () => {
 
   return (
     <div className='createPost'>
+        {loading ? <LoadingSpinner /> : null}
         <h2>Create an Entry</h2>
         <form action="">
             <input type="text" placeholder='Title' onChange={e => setTitle((e.target.value))}/>
