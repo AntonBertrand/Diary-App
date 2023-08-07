@@ -86,8 +86,8 @@ const Posts = () => {
 
         { currentPosts && currentPosts.map((post, i) => {
 
-                   return (<div className="post" key={i}>
-                    <div className="post-details" onClick={() => {loadPost(post._id)}}>
+                   return (<div className="post" key={i} onClick={() => {loadPost(post._id)}}>
+                    <div className="post-details">
                         <h2 className='post-title'>{post.title}</h2>
                         <span className='post-date'>{post.date.substring(0,10)}</span>
                         <span className='post-content'>{post.content.substring(0,150) + '...'}</span>
