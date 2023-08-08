@@ -92,7 +92,9 @@ const Posts = () => {
                         <span className='post-date'>{post.date.substring(0,10)}</span>
                         <span className='post-content'>{post.content.substring(0,150) + '...'}</span>
                     </div>
-                    <div className="delete-button" onClick={() => {deletePost(post._id)}}>
+                    <div className="delete-button" onClick={(e) => {
+                      e.stopPropagation(); 
+                      deletePost(post._id)}}>
                         <p>X</p>
                     </div>
                 </div>)
